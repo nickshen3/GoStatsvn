@@ -66,7 +66,8 @@ func main() {
 		newRev, _ := strconv.Atoi(svnXmlLog.Revision)
 		fmt.Printf("svn diff on r%d ,\n", newRev)
 		for _, path := range svnXmlLog.Paths {
-			if path.Action == "M" && path.Kind == "file" {
+			//A-添加文件;M-修改文件
+			if (path.Action == "A" || path.Action == "M") && path.Kind == "file" {
 				stdout, err := util.CallSvnDiff(newRev-1, newRev, svnRoot+path.Path)
 				if err == nil {
 					//fmt.Println("stdout ",stdout)

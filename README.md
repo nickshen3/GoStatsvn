@@ -14,7 +14,13 @@ then run the GoStatsvn with -f the svn log file, -d the svn working directory an
 然后运行编译好的GoStatsvn,使用-f参数指定svn日志文件的位置，-d参数指定svn的开发路径, -t参数指定画图的模版文件路径，模版文件是项目根目录下的gostatsvn.html文件。  
 <pre><code>
 svn log -v --xml  > svnlog.xml
-./GoStatsvn -f svnlog.xml -d workingDirectory -t hightchartsTemplateFilePath
+#编译
+go build .
+#运行
+./GoStatsvn -f svnlog.xml -d workingDirectory -t hightchartsTemplateFile
+#查看结果,使用浏览器打开
+http://localhost:8088
+
 </code></pre>
 
 #demo

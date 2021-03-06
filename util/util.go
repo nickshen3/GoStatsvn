@@ -6,7 +6,6 @@ import (
 	"encoding/xml"
 	"io/ioutil"
 	"log"
-	"os"
 	"os/exec"
 	"regexp"
 	"strconv"
@@ -91,14 +90,15 @@ func ParaseSvnXmlLog(svnXmlLogFile string) (svnXmlLogs SvnXmlLogs, err error) { 
 
 //获取svn根
 func GetSvnRoot(workDir string) (svnRoot string, err error) { /*{{{*/
-	pwd, _ := os.Getwd()
-	if strings.HasPrefix(workDir, "/") {
-		pwd = ""
-	}
+	//pwd, _ := os.Getwd()
+	// if strings.HasPrefix(workDir, "/") {
+	// 	pwd = ""
+	// }
 	app := "svn"
 	param1 := "info"
 	param2 := "--xml"
-	param3 := pwd + "/" + workDir
+	//param3 := pwd + "/" + workDir
+	param3 := workDir
 
 	cmd := exec.Command(app, param1, param2, param3)
 	var out bytes.Buffer
